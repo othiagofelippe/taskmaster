@@ -15,6 +15,10 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px #00B37E;
+  }
 
 body {
   color: rgb(var(--foreground-rgb));

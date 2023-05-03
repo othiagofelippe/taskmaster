@@ -1,0 +1,9 @@
+import { ButtonHTMLAttributes, ReactNode } from 'react'
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  size?: 'sm' | 'md' | 'lg'
+  hasIcon?: boolean
+  variant?: 'outline' | 'filled'
+  className?: string
+  children: ReactNode
+}
