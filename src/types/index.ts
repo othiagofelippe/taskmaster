@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+import { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode } from 'react'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'sm' | 'md' | 'lg'
@@ -6,4 +6,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'outline' | 'filled'
   className?: string
   children: ReactNode
+}
+
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string
+  error?: string
+  className?: string
 }

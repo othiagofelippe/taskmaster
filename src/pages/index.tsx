@@ -1,11 +1,9 @@
-import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
 
 export default function Home() {
   return (
-    <div>
-      <Button variant="outline" className="">
-        Te amo
-      </Button>
+    <div className="flex justify-center items-center h-screen">
+      <Input placeholder="Digite o nome da tarefa" />
     </div>
   )
 }
