@@ -1,9 +1,9 @@
-import { Input } from '@/components/Input'
+import { Table } from '@/components/Table'
 
 export default function Home() {
   return (
     <div className="flex justify-center items-center h-screen">
-      <Input placeholder="Digite o nome da tarefa" />
+      <Table />
     </div>
   )
 }
