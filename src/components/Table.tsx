@@ -1,4 +1,5 @@
 import React from 'react'
+import { TableRow } from './TableRow'
 
 interface Task {
   id: number
@@ -94,7 +95,9 @@ export function Table() {
             </th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <TableRow taskList={taskList} />
+        </tbody>
       </table>
     </div>
   )
