@@ -1,73 +1,6 @@
 import React from 'react'
 import { TableRow } from './TableRow'
 
-interface Task {
-  id: number
-  title: string
-  category: string
-  status: string
-  completionDate: string
-}
-
-const taskList: Task[] = [
-  {
-    id: 1,
-    title: 'Comprar mantimentos',
-    category: 'Compras',
-    status: 'Pendente',
-    completionDate: '10/05/2023',
-  },
-  {
-    id: 2,
-    title: 'Pagar a conta de luz',
-    category: 'Contas',
-    status: 'Concluída',
-    completionDate: '03/05/2023',
-  },
-  {
-    id: 3,
-    title: 'Fazer exercícios físicos',
-    category: 'Saúde',
-    status: 'Pendente',
-    completionDate: '15/05/2023',
-  },
-  {
-    id: 3,
-    title: 'Fazer exercícios físicos',
-    category: 'Saúde',
-    status: 'Pendente',
-    completionDate: '15/05/2023',
-  },
-  {
-    id: 3,
-    title: 'Fazer exercícios físicos',
-    category: 'Saúde',
-    status: 'Pendente',
-    completionDate: '15/05/2023',
-  },
-  {
-    id: 3,
-    title: 'Fazer exercícios físicos',
-    category: 'Saúde',
-    status: 'Pendente',
-    completionDate: '15/05/2023',
-  },
-  {
-    id: 3,
-    title: 'Fazer exercícios físicos',
-    category: 'Saúde',
-    status: 'Pendente',
-    completionDate: '15/05/2023',
-  },
-  {
-    id: 3,
-    title: 'Fazer exercícios físicos',
-    category: 'Saúde',
-    status: 'Pendente',
-    completionDate: '15/05/2023',
-  },
-]
-
 export function Table() {
   return (
     <div className="overflow-y-auto min-w-[931px] h-[465px]">
@@ -96,7 +29,7 @@ export function Table() {
           </tr>
         </thead>
         <tbody>
-          <TableRow taskList={taskList} />
+          <TableRow />
         </tbody>
       </table>
     </div>

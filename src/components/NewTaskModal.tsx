@@ -1,10 +1,51 @@
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { ArrowRight, XCircle } from 'phosphor-react'
 import { Input } from './Input'
 import { Button } from './Button'
 
+import { useTask } from '@/context/TaskContext'
+
+interface Task {
+  taskName: string
+  taskCategory: string
+  taskDate: string
+  completed: boolean
+}
+
 export function NewTaskModal() {
+  const { addTask } = useTask()
+  const [newTask, setNewTask] = useState<Task>({
+    taskName: '',
+    taskCategory: '',
+    taskDate: '',
+    completed: false,
+  })
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+
+    if (!newTask.taskName || !newTask.taskCategory || !newTask.taskDate) {
+      alert('Por favor, preencha todos os campos obrigatórios')
+      return
+    }
+
+    addTask(newTask)
+
+    setNewTask({
+      taskName: '',
+      taskCategory: '',
+      taskDate: '',
+      completed: false,
+    })
+  }
+
+  function handleChange(
+    event: FormEvent<HTMLInputElement | HTMLSelectElement>,
+  ) {
+    const { name, value } = event.target as HTMLInputElement | HTMLSelectElement
+    setNewTask((prev) => ({ ...prev, [name]: value }))
+  }
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -24,15 +65,56 @@ export function NewTaskModal() {
             claramente a tarefa. Você pode editar ou excluir a tarefa a qualquer
             momento. Boa sorte!
           </Dialog.Description>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-4">
               <Input
-                placeholder="Fazer exercícios físicos"
+                type="text"
+                id="taskName"
+                name="taskName"
                 label="Nome da tarefa"
+                placeholder="Fazer exercícios físicos"
+                required
+                value={newTask.taskName}
+                onChange={handleChange}
                 className="w-full"
               />
-              <Input placeholder="Saúde" label="Categoria" className="w-full" />
-              <Input type="date" label="Data de conclusão" className="w-full" />
+
+              {/* <Input
+                label="Categoria"
+                id="taskCategory"
+                name="taskCategory"
+                required
+                placeholder="Saúde"
+                onChange={handleChange}
+                className="w-full"
+              /> */}
+
+              <label htmlFor="taskCategory">Categoria:</label>
+              <select
+                id="taskCategory"
+                name="taskCategory"
+                required
+                defaultValue=""
+                onChange={handleChange}
+              >
+                <option value="" disabled>
+                  Selecione a categoria
+                </option>
+                <option value="pessoal">Pessoal</option>
+                <option value="trabalho">Trabalho</option>
+                <option value="diversao">Diversão</option>
+              </select>
+
+              <Input
+                type="date"
+                id="taskDate"
+                name="taskDate"
+                label="Data de conclusão"
+                required
+                value={newTask.taskDate}
+                onChange={handleChange}
+                className="w-full"
+              />
             </div>
             <Button
               type="submit"
